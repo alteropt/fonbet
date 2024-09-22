@@ -1,0 +1,6 @@
+@import './variables';
+
+@mixin promo-link-active {
+  color: $cWhite;
+  background-color: $cActive;
+}

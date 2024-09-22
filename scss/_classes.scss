@@ -1,0 +1,23 @@
+@import './templates';
+
+.promo-link {
+  padding: 16px 36px;
+  border-radius: 20px;
+  width: max-content;
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  text-transform: uppercase;
+  color: $cBlack;
+  background-color: $cWhite;
+  font-weight: bold;
+
+  transition: .2s linear color,
+  .2s linear background-color;
+
+  &:hover {
+    @extend %promo-link-active;
+  }
+}

@@ -1,0 +1,56 @@
+@import './variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 17px;
+  font-family: "Cera Pro";
+  color: $cText;
+
+  @media(max-width: 992px) {
+    font-size: 15px;
+  }
+
+  @media(max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+input, textarea, button {
+  outline: none;
+  font-family: "Cera Pro";
+}
+
+a {
+  text-decoration: none;
+  color: $cWhite;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 1.1;
+
+  @media(max-width: 992px) {
+    font-size: 29px;
+  }
+
+  @media(max-width: 768px) {
+    font-size: 20px;
+  }
+}
