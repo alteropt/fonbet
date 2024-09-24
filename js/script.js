@@ -105,5 +105,6 @@ document.getElementById('patch-name').addEventListener('keydown', function(e) {
 })
 
 const mainSwiper = new Swiper('.main-slider', {
-  autoHeight: true
+  autoHeight: true,
+  loop: true,
 })
