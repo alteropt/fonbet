@@ -87,6 +87,8 @@ document.getElementById('patch-name').addEventListener('change', function(e) {
   }
 })
 
+const cardName = document.querySelector('.card__name')
+
 document.getElementById('patch-name').addEventListener('keydown', function(e) {
   let patchName = e.target.value.trim()
   e.target.value = e.target.value.trim()
@@ -98,8 +100,8 @@ document.getElementById('patch-name').addEventListener('keydown', function(e) {
     let charsLeft = 26 - e.target.value.length
     document.getElementById('name-amount').textContent = charsLeft
     
-    if(document.querySelector('.card__name').textContent.length > 13) {
-      document.querySelector('.card__name').innerHTML = document.querySelector('.card__name').textContent.slice(0, 13) + `<br/>` + document.querySelector('.card__name').textContent.slice(13,)
+    if(cardName.textContent.length > 13) {
+      cardName.innerHTML = cardName.textContent.slice(0, 13) + `<br/>` + cardName.textContent.slice(13,)
     }
   }
 })
