@@ -1,19 +1,19 @@
-const swiperConstructor = new Swiper(document.querySelector('.constructor .constructor__variants'), {
+const swiperConstructor = new Swiper(document.querySelector('.constructor__main .constructor__variants'), {
   direction: 'horizontal',
   slidesToShow: 1,
   spaceBetween: 12,
   loop: true,
   navigation: {
-    nextEl: '.constructor__choice .swiper-button-next',
-    prevEl: '.constructor__choice .swiper-button-prev',
+    nextEl: '.constructor__main .constructor__choice .swiper-button-next',
+    prevEl: '.constructor__main .constructor__choice .swiper-button-prev',
   },
   pagination: {
-    el: '.constructor choice .swiper-pagination',
+    el: '.constructor__main .constructor__choice .swiper-pagination',
     clickable: true,
   }
 })
 
-const swiperConstructor2 = new Swiper(document.querySelector('.constructor.shevron .constructor__variants'), {
+const swiperConstructor2 = new Swiper(document.querySelector('.constructor.shevron-left .constructor__variants'), {
   direction: 'horizontal',
   slidesToShow: 1,
   spaceBetween: 12,
@@ -109,4 +109,10 @@ document.getElementById('patch-name').addEventListener('keydown', function(e) {
 const mainSwiper = new Swiper('.main-slider', {
   autoHeight: true,
   loop: true,
+  navigation: {
+    nextEl: '.main-arrow-next',
+    prevEl: '.main-arrow-prev'
+  }
 })
+
+

@@ -125,6 +125,24 @@ h2 {
   font-weight: bold;
   transition: 0.2s linear color, 0.2s linear background-color;
 }
+.btn-nav {
+  background-color: #222B36;
+  border-radius: 20px;
+  padding: 12px 28px;
+  font-size: 27px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+}
+@media (max-width: 992px) {
+  .btn-nav {
+    font-size: 20px;
+  }
+}
+
 .promo-link:hover {
   color: #fff;
   background-color: #E80024;
@@ -135,7 +153,7 @@ h2 {
 }
 @media (max-width: 1280px) {
   .container {
-    padding: 20px 28px 0 28px;
+    padding: 20px 80px 0 28px;
   }
 }
 @media (max-height: 700px) {
@@ -326,6 +344,40 @@ section {
   padding-top: 60px;
   display: flex;
   gap: 80px;
+}
+.constructor .main-arrow-next {
+  position: absolute;
+  z-index: 100;
+  right: 20px;
+  bottom: 48px;
+}
+@media (max-width: 992px) {
+  .constructor .main-arrow-next {
+    bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .constructor .main-arrow-next {
+    bottom: 12px;
+  }
+}
+.constructor .main-arrow-prev {
+  position: absolute;
+  z-index: 100;
+  bottom: 48px;
+  left: 35%;
+}
+@media (max-width: 992px) {
+  .constructor .main-arrow-prev {
+    bottom: 0;
+    right: 150px;
+    left: auto;
+  }
+}
+@media (max-width: 768px) {
+  .constructor .main-arrow-prev {
+    bottom: 12px;
+  }
 }
 .constructor__patterns {
   position: absolute;
@@ -819,6 +871,41 @@ section {
   align-items: center;
   min-height: 100vh;
   height: auto;
+  position: relative;
+}
+.card .main-arrow-prev {
+  position: absolute;
+  z-index: 100;
+  left: 20px;
+  bottom: 48px;
+}
+@media (max-width: 992px) {
+  .card .main-arrow-prev {
+    bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .card .main-arrow-prev {
+    bottom: 12px;
+  }
+}
+.card .main-arrow-next {
+  position: absolute;
+  z-index: 100;
+  bottom: 48px;
+  right: 43%;
+}
+@media (max-width: 992px) {
+  .card .main-arrow-next {
+    bottom: 0;
+    left: 150px;
+    right: auto;
+  }
+}
+@media (max-width: 768px) {
+  .card .main-arrow-next {
+    bottom: 12px;
+  }
 }
 .card__patterns {
   position: absolute;
