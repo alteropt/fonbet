@@ -43,17 +43,53 @@ const swiperConstructor3 = new Swiper(document.querySelector('.constructor.shevr
   }
 })
 
-const currentVariantText = document.querySelector('.constructor.shevron-left .constructor__current span')
-const swiperLength = swiperConstructor2.slides.length
+const currentVariantTextMain = document.querySelector('.constructor__main .constructor__current span')
+const swiperShevronMainLength = swiperConstructor.slides.length
+const currentVariantTextShevronLeft = document.querySelector('.constructor.shevron-left .constructor__current span')
+const swiperShevronLeftLength = swiperConstructor2.slides.length
+const currentVariantTextShevronRight = document.querySelector('.constructor.shevron-right .constructor__current span')
+const swiperShevronRightLength = swiperConstructor3.slides.length
+
+swiperConstructor.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor__main .swiper-pagination-bullet') 
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor__main .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronMainLength) {
+    currentVariantTextMain.innerHTML = ` пуст`
+  } else {
+    currentVariantTextMain.innerHTML = `${activeSlideIndex+1}/${swiperShevronMainLength-1}`
+  }
+})
 
 swiperConstructor2.on('slideChange afterInit init', () => {
   let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet') 
   const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
 
-  if(activeSlideIndex + 1 === swiperLength) {
-  currentVariantText.innerHTML = ` пуст`
+  if(activeSlideIndex + 1 === swiperShevronLeftLength) {
+    currentVariantTextShevronLeft.innerHTML = ` пуст`
   } else {
-    currentVariantText.innerHTML = `${activeSlideIndex+1}/${swiperLength-1}`
+    currentVariantTextShevronLeft.innerHTML = `${activeSlideIndex+1}/${swiperShevronLeftLength-1}`
+  }
+})
+swiperConstructor2.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet') 
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronLeftLength) {
+    currentVariantTextShevronLeft.innerHTML = ` пуст`
+  } else {
+    currentVariantTextShevronLeft.innerHTML = `${activeSlideIndex+1}/${swiperShevronLeftLength-1}`
+  }
+})
+
+swiperConstructor3.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor.shevron-right .swiper-pagination-bullet') 
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-right .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronRightLength) {
+    currentVariantTextShevronRight.innerHTML = ` пуст`
+  } else {
+    currentVariantTextShevronRight.innerHTML = `${activeSlideIndex+1}/${swiperShevronRightLength-1}`
   }
 })
 
