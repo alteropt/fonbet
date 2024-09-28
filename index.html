@@ -15,9 +15,7 @@
 </head>
 <body>
   <main>
-    <div class="main-slider swiper">
-      <div class="swiper-wrapper">
-        <section class="intro container swiper-slide">
+      <section class="intro active container">
           <div class="intro__patterns">
             <img src="./img/screens/0/patterns/1.svg" alt="1">
             <img src="./img/screens/0/patterns/2.svg" alt="2">
@@ -30,16 +28,16 @@
               <p>Прими участие в розыгрыше уникальных джерси с принтами от художников! Выбери свой дизайн и зарабатывай баллы Великой Погони.</p>
               <p>Мы разыграем пять джерси среди тех, кто создал свой дизайн и набрал больше всего балловк тому моменту, когда Ови забьет шайбу #850!</p>
             </div>
-            <a href="#" aria-label="СОЗДАТЬ ДИЗАЙН ДЖЕРСИ" class="promo-link intro__link">СОЗДАТЬ ДИЗАЙН ДЖЕРСИ</a>
+            <a href="#" aria-label="СОЗДАТЬ ДИЗАЙН ДЖЕРСИ" class="promo-link intro__link main-arrow-next">СОЗДАТЬ ДИЗАЙН ДЖЕРСИ</a>
           </div>
           <picture class="intro__photo">
             <img src="./img/screens/0/patterns/3.svg" alt="3" class="intro__photo-pattern">
             <source srcset="./img/screens/0/photo.png" media="(min-width: 640px)"/>
             <img src="./img/screens/0/photo-small.png" alt="photo">
           </picture>
-        </section>
-        <section class="constructor constructor__main container swiper-slide">
-          <button class="main-arrow-next btn-nav first">Далее</button>
+      </section>
+      <section class="constructor constructor__main container">
+          <button class="main-arrow-next btn-nav">Далее</button>
           <div class="constructor__patterns first">
             <img src="./img/screens/1/patterns/1.svg" alt="1">
             <img src="./img/screens/1/patterns/2.svg" alt="2">
@@ -49,7 +47,7 @@
           </div>
           <div class="constructor__stage">
             <span class="constructor__number">1</span>
-            <h2 class="constructor__desc">Для начала давай&nbsp;выберем основной принт</h2>
+            <h2 class="constructor__desc">Для начала давай выберем основной принт</h2>
           </div>
           <div class="constructor__choice">
             <picture class="constructor__jersey">
@@ -66,8 +64,8 @@
             <div class="swiper-pagination"></div>
             <h6 class="constructor__current">Основной принт <span></span></h6>
           </div>
-        </section>
-        <section class="constructor container shevron shevron-left swiper-slide">
+      </section>
+      <section class="constructor container shevron shevron-left">
           <button class="main-arrow-prev btn-nav">Назад</button>
           <button class="main-arrow-next btn-nav">Далее</button>
           <div class="constructor__patterns second">
@@ -95,8 +93,8 @@
             <div class="swiper-pagination"></div>
             <h6 class="constructor__current">Левый шеврон <span></span></h6>
           </div>
-        </section>
-        <section class="constructor container shevron shevron-right swiper-slide">
+      </section>
+      <section class="constructor container shevron shevron-right">
           <button class="main-arrow-prev btn-nav">Назад</button>
           <button class="main-arrow-next btn-nav">Далее</button>
           <div class="constructor__patterns third">
@@ -125,7 +123,8 @@
             <h6 class="constructor__current">Правый шеврон <span></span></h6>
           </div>
         </section>
-        <section class="card swiper-slide">
+
+        <section class="card container">
           <button class="main-arrow-prev btn-nav">Назад</button>
           <button class="main-arrow-next btn-nav">Далее</button>
           <div class="card__choice">
@@ -145,10 +144,6 @@
                 <h2>ПОЧТИ ГОТОВО!</h2>
                 <p>ОСТАЛОСЬ ДОБАВИТЬ ПАТЧ. <br> ВВЕДИ СВОЕ ИМЯ ИЛИ ПРОЗВИЩЕ</p>
               </div>
-            </div>
-            <div class="card__input">
-              <textarea id="patch-name" type="text" name="name" maxlength="26">Константин Константинов</textarea>
-              <label for="name">Осталось <span id="name-amount">0</span> символов</label>
             </div>
           </div>
           <div class="card__patterns">
