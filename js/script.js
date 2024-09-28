@@ -47,7 +47,7 @@ const currentVariantText = document.querySelector('.constructor.shevron-left .co
 const swiperLength = swiperConstructor2.slides.length
 
 swiperConstructor2.on('slideChange afterInit init', () => {
-  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet') 
+  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet')
   const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
 
   if(activeSlideIndex + 1 === swiperLength) {
@@ -74,11 +74,30 @@ const cardSwiper = new Swiper(document.querySelector('.card__choice'), {
   }
 })
 
+const finalSwiper = new Swiper(
+  document.querySelector('.jersey .constructor__variants'),
+  {
+    direction: 'horizontal',
+    slidesToShow: 1,
+    spaceBetween: 12,
+    loop: true,
+    enabled: false,
+    navigation: {
+      nextEl: '.constructor__choice .swiper-button-next',
+      prevEl: '.constructor__choice .swiper-button-prev',
+    },
+    pagination: {
+      el: '.constructor choice .swiper-pagination',
+      clickable: true,
+    },
+  }
+);
+
 document.getElementById('patch-name').addEventListener('change', function(e) {
   let patchName = e.target.value.trim()
   document.querySelector('.card__name').textContent = patchName
   e.target.value = e.target.value.trim()
-  
+
   let charsLeft = 26 - e.target.value.length
   document.getElementById('name-amount').textContent = charsLeft
 
@@ -93,13 +112,13 @@ document.getElementById('patch-name').addEventListener('keydown', function(e) {
   let patchName = e.target.value.trim()
   e.target.value = e.target.value.trim()
 
-  if(e.code === "Enter") {    
+  if(e.code === "Enter") {
     e.preventDefault()
     document.querySelector('.card__name').textContent = patchName
-    
+
     let charsLeft = 26 - e.target.value.length
     document.getElementById('name-amount').textContent = charsLeft
-    
+
     if(cardName.textContent.length > 13) {
       cardName.innerHTML = cardName.textContent.slice(0, 13) + `<br/>` + cardName.textContent.slice(13,)
     }
@@ -112,7 +131,58 @@ const mainSwiper = new Swiper('.main-slider', {
   navigation: {
     nextEl: '.main-arrow-next',
     prevEl: '.main-arrow-prev'
-  }
+  },
+  // initialSlide: 5
 })
 
+function setOpacity(targetElement, elements, printImg) {
+  printImg.style.opacity = '0.5';
+  targetElement.style.opacity = '1';
+  elements.forEach((el) => {
+    el.style.opacity = '0.5';
+  });
+}
 
+
+function addEventListeners() {
+  const centerOverlay = document.querySelector('.jersey__center-overlay');
+  const leftOverlay = document.querySelector('.jersey__left-overlay');
+  const rightOverlay = document.querySelector('.jersey__right-overlay');
+  const bottomOverlay = document.querySelector('.jersey__bottom-overlay');
+
+  const mainPrint = document.querySelector('.l-jersey-main-print-5');
+  const leftShevron = document.querySelector('.l-jersey-let-shevron-5');
+  const rightShevron = document.querySelector('.l-jersey-right-shevron-5');
+  const patch = document.querySelector('.l-jersey-patch-5');
+  const printImg = document.querySelector('.l-jersey-image-5');
+  const allSections = [mainPrint, leftShevron, rightShevron, patch];
+
+  rightOverlay.addEventListener('click', (e) => {
+    const elements = [mainPrint, leftShevron, patch];
+    setOpacity(rightShevron, elements, printImg);
+  });
+  leftOverlay.addEventListener('click', (e) => {
+    const elements = [mainPrint, rightShevron, patch];
+    setOpacity(leftShevron, elements, printImg);
+  });
+  centerOverlay.addEventListener('click', (e) => {
+    const elements = [rightShevron, leftShevron, patch];
+    setOpacity(mainPrint, elements, printImg);
+  });
+  bottomOverlay.addEventListener('click', (e) => {
+    const elements = [rightShevron, leftShevron, mainPrint];
+    setOpacity(patch, elements, printImg);
+  });
+  const finalSection = document.querySelector('section.final');
+  finalSection.addEventListener('click', (e) => {
+    const jerseySection = document.querySelector('.jersey');
+    if (!jerseySection.contains(e.target)) {
+      printImg.style.opacity = '1';
+      allSections.forEach((el) => {
+        el.style.opacity = '1';
+      });
+    }
+  });
+}
+
+window.addEventListener('load', addEventListeners);
