@@ -142,13 +142,19 @@ document.getElementById('patch-name').addEventListener('keydown', function(e) {
   }
 })
 
-const mainSwiper = new Swiper('.main-slider', {
-  autoHeight: true,
-  loop: true,
-  navigation: {
-    nextEl: '.main-arrow-next',
-    prevEl: '.main-arrow-prev'
-  }
+const sections = document.querySelectorAll('section')
+const navButtons = [...document.querySelectorAll('.main-arrow-prev'), ...document.querySelectorAll('.main-arrow-next')]
+
+navButtons.forEach(navButton => {
+  navButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    const currentSection = document.querySelector('section.active')
+    currentSection.classList.remove('active')
+    const currentSectionIndex = Array.from(sections).indexOf(currentSection)
+    if(e.target.classList.contains('main-arrow-next')) {
+      sections[currentSectionIndex+1].classList.add('active')
+    } else if(e.target.classList.contains('main-arrow-prev')) {
+      sections[currentSectionIndex-1].classList.add('active')
+    }
+  })
 })
-
-

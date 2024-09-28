@@ -24,6 +24,11 @@ section {
 
   height: 100vh !important;  
   overflow-y: auto;
+  display: none !important;
+
+  &.active {
+    display: flex !important;
+  }
 }
 
 .main-slider {
@@ -92,6 +97,11 @@ section {
     img {
       max-height: 100%;
       z-index: 1;
+
+      @media(min-width: 1440px) {
+        height: auto;
+        flex-basis: 100%;
+      }
     }
 
     &-pattern {
@@ -145,6 +155,7 @@ section {
   }
 
   @media(max-width: 992px) {
+
     &__slogan {
       font-size: 60px;
     }
@@ -163,6 +174,7 @@ section {
 
     &__link {
       font-size: 20px;
+      padding: 15px 16px;
     }
   }
 
@@ -176,16 +188,13 @@ section {
       gap: 12px;
       margin-bottom: 20px;
     }
-
-    &__link {
-      font-size: 12px;
-    }
   }
 
   @media(max-width: 640px), (orientation: portrait) {
     flex-direction: column;
     gap: 24px;
     align-items: center;
+    padding: 0;
 
     &__patterns {
       img {
@@ -216,6 +225,8 @@ section {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+
+      padding: 70px 28px 0;
     }
 
     &__desc {
@@ -227,8 +238,7 @@ section {
 
       position: absolute;
       z-index: 200;
-      width: 100%;
-      max-width: 320px;
+      max-width: 440px;
       left: 50%;
       transform: translateX(-50%);
       bottom: 45px;
@@ -238,13 +248,14 @@ section {
   @media(max-width: 350px) {
     &__link {
       max-width: 270px;
+      font-size: 16px;
     }
   }
 }
 
 /* Constructor */
 .constructor {
-  padding-bottom: 48px;
+  padding-bottom: 70px;
   padding-top: 60px;
 
   display: flex;
@@ -253,15 +264,14 @@ section {
   .main-arrow-next {
     position: absolute;
     z-index: 100;
-    right: 64px;
+    right: 48px;
     bottom: 48px;
 
     @media(max-width: 1200px) {
-      right: 0;
+      bottom: 12px;
     }
 
     @media(max-width: 992px) {
-      bottom: 0;
       right: 20px;
     }
 
@@ -277,17 +287,18 @@ section {
     left: 35%;
 
     @media(max-width: 1200px) {
-      left: 29%;
+      bottom: 12px;
     }
 
     @media(max-width: 992px) {
-      bottom: 0;
-      right: 150px;
+      right: 200px;
       left: auto;
     }
 
     @media(max-width: 768px) {
-      bottom: 12px;   
+      bottom: 12px;
+      right: auto;
+      left: 20px;
     }
   }
 
@@ -413,7 +424,6 @@ section {
     flex-direction: column;
     justify-content: center;
     
-    height: fit-content;
     width: fit-content;
 
     user-select: none;
@@ -464,7 +474,7 @@ section {
   
   .swiper-button-prev::after {
     background-image: url(../img/screens/1/arrows/prev.svg);
-    left: -100%;
+    left: -250%;
 
     @media(max-width: 992px) {
       left: 50%;
@@ -473,7 +483,7 @@ section {
   
   .swiper-button-next::after {
     background-image: url(../img/screens/1/arrows/next.svg);
-    right: -100%;
+    right: -250%;
 
     @media(max-width: 992px) {
       right: 50%;
@@ -620,19 +630,11 @@ section {
     }
 
     .swiper-button-prev::after {
-      left: -180%;
-
-      @media(max-width: 1440px) {
-        left: -150%;
-      }
+      left: -200%;
     }
   
     .swiper-button-next::after {
-      right: -180%;
-
-      @media(max-width: 1440px) {
-        right: -150%;
-      }
+      right: -200%;
     }
 
     .swiper-pagination {
@@ -668,12 +670,11 @@ section {
       }
       
       .constructor__jersey {
-        max-width: 315px;
-        height: 610px;
         margin-top: 0;
 
         img {
-          margin-bottom: -60%;
+          height: 680px;
+          margin-bottom: -50%;
         }
       }
 
@@ -686,13 +687,19 @@ section {
       }
     }
 
-    @media(max-width: 425px) {
+    @media(max-width: 375px) {
+      .constructor__jersey img {
+        height: auto;
+      }
+    }
+
+    @media(max-width: 768px) {
       .swiper-button-prev::after {
-        left: 0;
+        left: -100%;
       }
     
       .swiper-button-next::after {
-        right: 0;
+        right: -100%;
       }
     }
   }
@@ -710,7 +717,7 @@ section {
   @media(max-width: 768px) {
     flex-direction: column;
     gap: 0;
-    justify-content: flex-end;
+    align-items: flex-start;
 
     &__patterns {
       &.first img {
@@ -783,15 +790,18 @@ section {
       }
     }
 
+    &__stage {
+      padding: 0;
+    }
+
     @media(max-width: 640px) {
       &__desc {
-        max-width: 220px;
+        max-width: 270px;
       }
     }
 
     &.container {
-      padding-left: 0;
-      padding-right: 0;
+      padding-right: 28px;
     }
 
     &__choice {
@@ -857,7 +867,6 @@ section {
 
   @media(orientation: portrait) {
     flex-direction: column;
-    align-items: center;
 
     &__patterns.second img:nth-child(2) {
       display: none;
