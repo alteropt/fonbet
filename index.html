@@ -9,6 +9,9 @@
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
   />
   <link rel="stylesheet" href="./css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="./js/script.js"></script>
 </head>
 <body>
   <main>
@@ -55,11 +58,6 @@
             </picture>
             <div class="constructor__variants swiper">
               <div class="swiper-wrapper">
-                <img src="./img/screens/1/print.png" alt="print" class="swiper-slide">
-                <img src="./img/screens/1/print.png" alt="print" class="swiper-slide">
-                <img src="./img/screens/1/print.png" alt="print" class="swiper-slide">
-                <img src="./img/screens/1/print.png" alt="print" class="swiper-slide">
-                <img src="./img/screens/1/print.png" alt="print" class="swiper-slide">
                 <span class="swiper-slide"></span>
               </div>
             </div>
@@ -89,11 +87,6 @@
             </picture>
             <div class="constructor__variants swiper">
               <div class="swiper-wrapper">
-                <img src="./img/screens/2/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/2/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/2/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/2/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/2/shevron.png" alt="shevron" class="swiper-slide">
                 <span class="swiper-slide"></span>
               </div>
             </div>
@@ -123,11 +116,6 @@
             </picture>
             <div class="constructor__variants swiper">
               <div class="swiper-wrapper">
-                <img src="./img/screens/3/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/3/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/3/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/3/shevron.png" alt="shevron" class="swiper-slide">
-                <img src="./img/screens/3/shevron.png" alt="shevron" class="swiper-slide">
                 <span class="swiper-slide"></span>
               </div>
             </div>
@@ -140,41 +128,16 @@
         <section class="card swiper-slide">
           <button class="main-arrow-prev btn-nav">Назад</button>
           <button class="main-arrow-next btn-nav">Далее</button>
-          <div class="card__choice swiper">
-            <img src="./img/screens/4/patterns/jersey.png" alt="jersey">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="card__single">
-                  <span class="card__number"># ХХХ/895</span>
-                  <img src="./img/screens/4/slashes/white.svg" alt="pattern" class="card__pattern">
-                  <span class="card__name">Константин Константинов</span>
-                  <span class="card__slogan"><span>////////</span>the gr8 chase</span>
-                  <img src="./img/screens/4/logos/black-white.svg" alt="logo">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="card__single black">
-                  <span class="card__number"># ХХХ/895</span>
-                  <img src="./img/screens/4/slashes/white.svg" alt="pattern" class="card__pattern">
-                  <span class="card__name">Константин Константинов</span>
-                  <span class="card__slogan"><span>////////</span>the gr8 chase</span>
-                  <img src="./img/screens/4/logos/white-red.svg" alt="logo">
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="card__single white">
-                  <span class="card__number"># ХХХ/895</span>
-                  <img src="./img/screens/4/slashes/black.svg" alt="pattern" class="card__pattern">
-                  <span class="card__name">Константин Константинов</span>
-                  <span class="card__slogan"><span>////////</span>the gr8 chase</span>
-                  <img src="./img/screens/4/logos/black-red.svg" alt="logo">
-                </div>
-              </div>
+          <div class="card__choice">
+            <div class="card__wrapper swiper">
+              <div class="swiper-wrapper"></div>
+              <div class="swiper-pagination"></div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
+            <!-- <img src="./img/screens/4/patterns/jersey.png" alt="jersey"> -->
           </div>
+
           <div class="card__text">
             <div class="card__text-content">
               <span class="card__title">4</span>
@@ -191,6 +154,7 @@
           <div class="card__patterns">
             <img src="./img/screens/4/patterns/1.svg" alt="1">
             <img src="./img/screens/4/patterns/2.svg" alt="2">
+            <img src="./img/screens/4/patterns/3.svg" alt="2">
           </div>
         </section>
         <section class="intro final container swiper-slide">
@@ -224,18 +188,20 @@
                 </picture> -->
                 <div class="constructor__variants swiper">
                   <div class="swiper-wrapper">
-                    <img src="/img/main-print.png" class="swiper-slide">
-                    <img src="/img/main-print.png" class="swiper-slide">
-                    <img src="/img/main-print.png" class="swiper-slide">
-                    <img src="/img/main-print.png" class="swiper-slide">
-                    <img src="/img/main-print.png" class="swiper-slide">
+                    <img src="/img/main-print.png" class="swiper-slide l-jersey-main-print">
+                    <img src="/img/main-print.png" class="swiper-slide l-jersey-main-print">
+                    <img src="/img/main-print.png" class="swiper-slide l-jersey-main-print">
+                    <img src="/img/main-print.png" class="swiper-slide l-jersey-main-print">
+                    <img src="/img/main-print.png" class="swiper-slide l-jersey-main-print">
                     <span class="swiper-slide"></span>
                   </div>
+
                 </div>
 
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
                 <div class="constructor__actions">
-                  <div class="swiper-button-prev"></div>
-                  <div class="swiper-button-next"></div>
                   <div class="swiper-pagination"></div>
                   <h6 class="constructor__current">Основной принт <span></span></h6>
                 </div>
@@ -262,8 +228,5 @@
       </div>
     </div>
   </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script type="module" src="./js/script.js"></script>
 </body>
 </html>

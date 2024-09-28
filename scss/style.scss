@@ -536,23 +536,47 @@ section {
       }
     }
 
-    .constructor__variants {
-      top: auto;
-      left: auto;
-      transform: translate(110%, 500%);
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: 40%;
+    }
+    .swiper-button-next {
+      right: -5%;
+    }
 
-      @media(min-width: 1500px) {
-        transform: translate(110%, 300%);
+    .swiper-button-prev {
+      left: -5%;
+    }
+
+    .constructor__variants {
+      top: 40%;
+      left: 60%;
+      transform: unset;
+    }
+
+    &.shevron-left {
+      .constructor__variants {
+        top: 20%;
+        left: 48%;
+        transform: unset;
+        width: 35%;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        top: 30%;
       }
     }
 
     &.shevron-right {
       .constructor__variants {
-        transform: translate(60%, 220%);
-        width: 35%;
+        top: 25%;
+        left: 15%;
+        transform: unset;
+        width: 40%;
 
         @media(min-width: 1500px) {
-          transform: translate(60%, 80%);
+          // transform: translate(60%, 80%);
         }
       }
 
@@ -584,7 +608,7 @@ section {
         }
 
         .constructor__variants {
-          transform: translate(60%, 270%);
+          // transform: translate(60%, 270%);
         }
       }
     }
@@ -863,7 +887,7 @@ section {
 .card {
   display: flex;
   gap: 20px;
-  align-items: center;
+  // align-items: center;
   min-height: 100vh;
   height: auto;
   position: relative;
@@ -922,6 +946,13 @@ section {
         right: 0;
         bottom: 0;
       }
+
+      &:nth-child(3) {
+        max-width: 500px;
+        width: 70%;
+        left: 0;
+        bottom: 0;
+      }
     }
   }
 
@@ -929,10 +960,8 @@ section {
     flex-basis: 60%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-    padding-bottom: 60px;
-    padding-top: 100px;
 
     user-select: none;
     position: relative;
@@ -1022,6 +1051,7 @@ section {
     flex-basis: 40%;
     position: relative;
     z-index: 3;
+    margin-top: 2.5rem;
   }
 
   &__title {
@@ -1070,12 +1100,25 @@ section {
     justify-content: center;
   }
 
+  &__wrapper {
+    width: 25%;
+  }
+
   .swiper-button-next,
   .swiper-button-prev {
     outline: none;
     border: none;
     color: transparent;
     font-size: 0;
+
+  }
+
+  .swiper-button-next {
+    right: 15%;
+  }
+
+  .swiper-button-prev {
+    left: 15%;
   }
 
   .swiper-button-prev::after,
@@ -1104,7 +1147,7 @@ section {
   .swiper-pagination {
     position: relative;
     padding-bottom: 24px;
-    bottom: 0;
+    bottom: 60px;
 
     &::after {
       content: 'Цвет';
@@ -1129,11 +1172,11 @@ section {
       opacity: .7;
 
       &:nth-child(1) {
-        background-color: $cActive;
+        background-color: $cBlack;
       }
 
       &:nth-child(2) {
-        background-color: $cBlack;
+        background-color: $cActive;
       }
 
       &:nth-child(3) {
@@ -1287,6 +1330,10 @@ section {
     left: 7%;
     transform: unset;
   }
+
+  .constructor__variants--final {
+    // width: 30%;
+  }
 }
 
 .jersey__center-overlay {
@@ -1306,7 +1353,6 @@ section {
   left: 10%;
   width: 15%;
   height: 30%;
-  // background-color: rgba(255, 0, 0, 0.5);
   cursor: pointer;
   z-index: 4;
 }
@@ -1317,7 +1363,6 @@ section {
   right: 10%;
   width: 15%;
   height: 30%;
-  // background-color: rgba(255, 0, 0, 0.5);
   cursor: pointer;
   z-index: 4;
 }
@@ -1328,7 +1373,6 @@ section {
   right: 27%;
   width: 9%;
   height: 12%;
-  // background-color: rgba(255, 0, 0, 0.5);
   cursor: pointer;
   z-index: 4;
 }

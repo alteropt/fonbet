@@ -2,6 +2,7 @@ const swiperConstructor = new Swiper(document.querySelector('.constructor__main 
   direction: 'horizontal',
   slidesToShow: 1,
   spaceBetween: 12,
+  init: false,
   loop: true,
   navigation: {
     nextEl: '.constructor__main .constructor__choice .swiper-button-next',
@@ -13,55 +14,64 @@ const swiperConstructor = new Swiper(document.querySelector('.constructor__main 
   }
 })
 
-const swiperConstructor2 = new Swiper(document.querySelector('.constructor.shevron-left .constructor__variants'), {
-  direction: 'horizontal',
-  slidesToShow: 1,
-  spaceBetween: 12,
-  loop: true,
-  navigation: {
-    nextEl: '.constructor.shevron-left .constructor__choice .swiper-button-next',
-    prevEl: '.constructor.shevron-left .constructor__choice .swiper-button-prev',
-  },
-  pagination: {
-    el: '.constructor.shevron-left .swiper-pagination',
-    clickable: true,
+const swiperConstructor2 = new Swiper(
+  document.querySelector('.constructor.shevron-left .constructor__variants'),
+  {
+    direction: 'horizontal',
+    slidesToShow: 1,
+    spaceBetween: 12,
+    init: false,
+    loop: true,
+    navigation: {
+      nextEl: '.constructor.shevron-left .constructor__choice .swiper-button-next',
+      prevEl: '.constructor.shevron-left .constructor__choice .swiper-button-prev',
+    },
+    pagination: {
+      el: '.constructor.shevron-left .swiper-pagination',
+      clickable: true,
+    },
   }
-})
+);
 
-const swiperConstructor3 = new Swiper(document.querySelector('.constructor.shevron-right .constructor__variants'), {
-  direction: 'horizontal',
-  slidesToShow: 1,
-  spaceBetween: 12,
-  loop: true,
-  navigation: {
-    nextEl: '.constructor.shevron-right .constructor__choice .swiper-button-next',
-    prevEl: '.constructor.shevron-right .constructor__choice .swiper-button-prev',
-  },
-  pagination: {
-    el: '.constructor.shevron-right .constructor__choice .swiper-pagination',
-    clickable: true,
+const swiperConstructor3 = new Swiper(
+  document.querySelector('.constructor.shevron-right .constructor__variants'),
+  {
+    direction: 'horizontal',
+    slidesToShow: 1,
+    spaceBetween: 12,
+    init: false,
+    loop: true,
+    navigation: {
+      nextEl: '.constructor.shevron-right .constructor__choice .swiper-button-next',
+      prevEl: '.constructor.shevron-right .constructor__choice .swiper-button-prev',
+    },
+    pagination: {
+      el: '.constructor.shevron-right .constructor__choice .swiper-pagination',
+      clickable: true,
+    },
   }
-})
+);
 
-const currentVariantText = document.querySelector('.constructor.shevron-left .constructor__current span')
-const swiperLength = swiperConstructor2.slides.length
+const currentVariantText = document.querySelector('.constructor.shevron-left .constructor__current span');
 
 swiperConstructor2.on('slideChange afterInit init', () => {
   let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet')
   const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
+  const swiperLength = swiperConstructor2.slides.length;
 
-  if(activeSlideIndex + 1 === swiperLength) {
-  currentVariantText.innerHTML = ` пуст`
+  if (activeSlideIndex + 1 === swiperLength) {
+    currentVariantText.innerHTML = ` пуст`
   } else {
     currentVariantText.innerHTML = `${activeSlideIndex+1}/${swiperLength-1}`
   }
 })
 
-const cardSwiper = new Swiper(document.querySelector('.card__choice'), {
+const cardSwiper = new Swiper(document.querySelector('.card__choice .swiper'), {
   direction: 'horizontal',
   slidesToShow: 1,
   spaceBetween: 12,
   loop: true,
+  init: false,
 
   navigation: {
     nextEl: '.card__choice .swiper-button-next',
@@ -71,11 +81,11 @@ const cardSwiper = new Swiper(document.querySelector('.card__choice'), {
   pagination: {
     el: '.card__choice .swiper-pagination',
     clickable: true,
-  }
-})
+  },
+});
 
 const finalSwiper = new Swiper(
-  document.querySelector('.jersey .constructor__variants'),
+  document.querySelector('.jersey .constructor__variants--final'),
   {
     direction: 'horizontal',
     slidesToShow: 1,
@@ -132,7 +142,7 @@ const mainSwiper = new Swiper('.main-slider', {
     nextEl: '.main-arrow-next',
     prevEl: '.main-arrow-prev'
   },
-  // initialSlide: 5
+  initialSlide: 1
 })
 
 function setOpacity(targetElement, elements, printImg) {
@@ -185,4 +195,87 @@ function addEventListeners() {
   });
 }
 
+async function request(url, method, params) {
+  try {
+    const response = await fetch(url, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
+    });
+
+    if (!response.ok) {
+      throw new Error('Произошла ошибка при выполнении запроса');
+    }
+
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function fetchPrints() {
+  const url = 'https://xcomfeed.com/fonbet/jersey/prints';
+  const method = 'POST';
+  const params = { artist_id: 1 };
+
+  const response = await request(url, method, params);
+
+  return response.prints;
+}
+
+async function setPrints() {
+  const prints = await fetchPrints();
+
+  console.log(prints);
+
+  const frontPrints = Object.values(prints.front);
+  const sidePrints = Object.values(prints.side);
+  const patchPrints = Object.values(prints.patch);
+
+  const frontParentElement = document.querySelector('.constructor__main .swiper-wrapper');
+  const leftSideParentElement = document.querySelector('.constructor.shevron-left .swiper-wrapper');
+  const rightSideParentElement = document.querySelector('.constructor.shevron-right .swiper-wrapper');
+  const patchParentElement = document.querySelector('.card .swiper-wrapper');
+
+  frontPrints.reverse().forEach(print => {
+    const imgEl = document.createElement('img');
+    imgEl.src = print.image;
+    imgEl.className = 'swiper-slide';
+
+    frontParentElement.insertBefore(imgEl, frontParentElement.firstChild);
+  });
+
+  sidePrints.forEach((print) => {
+    const imgEl = document.createElement('img');
+    imgEl.src = print.image;
+    imgEl.className = 'swiper-slide';
+
+    leftSideParentElement.insertBefore(imgEl, leftSideParentElement.firstChild);
+  });
+
+  sidePrints.forEach((print) => {
+    const imgEl = document.createElement('img');
+    imgEl.src = print.image;
+    imgEl.className = 'swiper-slide';
+
+    rightSideParentElement.insertBefore(imgEl, rightSideParentElement.firstChild);
+  });
+
+  patchPrints.reverse().forEach((print) => {
+    const imgEl = document.createElement('img');
+    imgEl.src = print.image;
+    imgEl.className = 'swiper-slide';
+
+    patchParentElement.insertBefore(imgEl, patchParentElement.firstChild);
+  });
+
+  swiperConstructor.init();
+  swiperConstructor2.init();
+  swiperConstructor3.init();
+  cardSwiper.init();
+}
+
 window.addEventListener('load', addEventListeners);
+window.addEventListener('load', setPrints);

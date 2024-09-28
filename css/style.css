@@ -601,24 +601,36 @@ section {
     flex-basis: 20%;
   }
 }
+.constructor.shevron .swiper-button-next,
+.constructor.shevron .swiper-button-prev {
+  top: 40%;
+}
+.constructor.shevron .swiper-button-next {
+  right: -5%;
+}
+.constructor.shevron .swiper-button-prev {
+  left: -5%;
+}
 .constructor.shevron .constructor__variants {
-  top: auto;
-  left: auto;
-  transform: translate(110%, 500%);
+  top: 40%;
+  left: 60%;
+  transform: unset;
 }
-@media (min-width: 1500px) {
-  .constructor.shevron .constructor__variants {
-    transform: translate(110%, 300%);
-  }
-}
-.constructor.shevron.shevron-right .constructor__variants {
-  transform: translate(60%, 220%);
+.constructor.shevron.shevron-left .constructor__variants {
+  top: 20%;
+  left: 48%;
+  transform: unset;
   width: 35%;
 }
-@media (min-width: 1500px) {
-  .constructor.shevron.shevron-right .constructor__variants {
-    transform: translate(60%, 80%);
-  }
+.constructor.shevron.shevron-left .swiper-button-next,
+.constructor.shevron.shevron-left .swiper-button-prev {
+  top: 30%;
+}
+.constructor.shevron.shevron-right .constructor__variants {
+  top: 25%;
+  left: 15%;
+  transform: unset;
+  width: 40%;
 }
 @media (max-height: 650px) {
   .constructor.shevron.shevron-right .constructor__choice {
@@ -641,9 +653,6 @@ section {
   }
   .constructor.shevron.shevron-right .constructor__choice {
     flex-basis: 60%;
-  }
-  .constructor.shevron.shevron-right .constructor__variants {
-    transform: translate(60%, 270%);
   }
 }
 .constructor.shevron .constructor__jersey {
@@ -874,7 +883,6 @@ section {
 .card {
   display: flex;
   gap: 20px;
-  align-items: center;
   min-height: 100vh;
   height: auto;
   position: relative;
@@ -934,14 +942,18 @@ section {
   right: 0;
   bottom: 0;
 }
+.card__patterns img:nth-child(3) {
+  max-width: 500px;
+  width: 70%;
+  left: 0;
+  bottom: 0;
+}
 .card__choice {
   flex-basis: 60%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 60px;
-  padding-top: 100px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -1017,6 +1029,7 @@ section {
   flex-basis: 40%;
   position: relative;
   z-index: 3;
+  margin-top: 2.5rem;
 }
 .card__title {
   font-size: 200px;
@@ -1054,12 +1067,21 @@ section {
   display: flex;
   justify-content: center;
 }
+.card__wrapper {
+  width: 25%;
+}
 .card .swiper-button-next,
 .card .swiper-button-prev {
   outline: none;
   border: none;
   color: transparent;
   font-size: 0;
+}
+.card .swiper-button-next {
+  right: 15%;
+}
+.card .swiper-button-prev {
+  left: 15%;
 }
 .card .swiper-button-prev::after,
 .card .swiper-button-next::after {
@@ -1084,7 +1106,7 @@ section {
 .card .swiper-pagination {
   position: relative;
   padding-bottom: 24px;
-  bottom: 0;
+  bottom: 60px;
 }
 .card .swiper-pagination::after {
   content: "Цвет";
@@ -1106,10 +1128,10 @@ section {
   opacity: 0.7;
 }
 .card .swiper-pagination-bullet:nth-child(1) {
-  background-color: #E80024;
+  background-color: #000;
 }
 .card .swiper-pagination-bullet:nth-child(2) {
-  background-color: #000;
+  background-color: #E80024;
 }
 .card .swiper-pagination-bullet:nth-child(3) {
   border-color: #000;
@@ -1239,7 +1261,6 @@ section {
   left: 7%;
   transform: unset;
 }
-
 .jersey__center-overlay {
   position: absolute;
   top: 50%;
