@@ -52,58 +52,6 @@ const swiperConstructor3 = new Swiper(
   }
 );
 
-const currentVariantText = document.querySelector('.constructor.shevron-left .constructor__current span');
-const currentVariantTextMain = document.querySelector('.constructor__main .constructor__current span')
-const swiperShevronMainLength = swiperConstructor.slides.length
-const currentVariantTextShevronLeft = document.querySelector('.constructor.shevron-left .constructor__current span')
-const swiperShevronLeftLength = swiperConstructor2.slides.length
-const currentVariantTextShevronRight = document.querySelector('.constructor.shevron-right .constructor__current span')
-const swiperShevronRightLength = swiperConstructor3.slides.length
-
-swiperConstructor.on('slideChange afterInit init', () => {
-  let swiperBullets = document.querySelectorAll('.constructor__main .swiper-pagination-bullet')
-  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor__main .swiper-pagination-bullet-active'))
-
-  if(activeSlideIndex + 1 === swiperShevronMainLength) {
-    currentVariantTextMain.innerHTML = ` пуст`
-  } else {
-    currentVariantTextMain.innerHTML = `${activeSlideIndex+1}/${swiperShevronMainLength-1}`
-  }
-})
-
-swiperConstructor2.on('slideChange afterInit init', () => {
-  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet')
-  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
-
-  if(activeSlideIndex + 1 === swiperShevronLeftLength) {
-    currentVariantTextShevronLeft.innerHTML = ` пуст`
-  } else {
-    currentVariantTextShevronLeft.innerHTML = `${activeSlideIndex+1}/${swiperShevronLeftLength-1}`
-  }
-})
-swiperConstructor2.on('slideChange afterInit init', () => {
-  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet')
-  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
-  const swiperLength = swiperConstructor2.slides.length;
-
-  if(activeSlideIndex + 1 === swiperShevronLeftLength) {
-    currentVariantTextShevronLeft.innerHTML = ` пуст`
-  } else {
-    currentVariantTextShevronLeft.innerHTML = `${activeSlideIndex+1}/${swiperShevronLeftLength-1}`
-  }
-})
-
-swiperConstructor3.on('slideChange afterInit init', () => {
-  let swiperBullets = document.querySelectorAll('.constructor.shevron-right .swiper-pagination-bullet')
-  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-right .swiper-pagination-bullet-active'))
-
-  if(activeSlideIndex + 1 === swiperShevronRightLength) {
-    currentVariantTextShevronRight.innerHTML = ` пуст`
-  } else {
-    currentVariantTextShevronRight.innerHTML = `${activeSlideIndex+1}/${swiperShevronRightLength-1}`
-  }
-})
-
 const cardSwiper = new Swiper(document.querySelector('.card__choice .swiper'), {
   direction: 'horizontal',
   slidesToShow: 1,
@@ -140,38 +88,6 @@ const finalSwiper = new Swiper(
     },
   }
 );
-
-document.getElementById('patch-name').addEventListener('change', function(e) {
-  let patchName = e.target.value.trim()
-  document.querySelector('.card__name').textContent = patchName
-  e.target.value = e.target.value.trim()
-
-  let charsLeft = 26 - e.target.value.length
-  document.getElementById('name-amount').textContent = charsLeft
-
-  if(document.querySelector('.card__name').textContent.length > 13) {
-    document.querySelector('.card__name').innerHTML = document.querySelector('.card__name').textContent.slice(0, 13) + `<br/>` + document.querySelector('.card__name').textContent.slice(13,)
-  }
-})
-
-const cardName = document.querySelector('.card__name')
-
-document.getElementById('patch-name').addEventListener('keydown', function(e) {
-  let patchName = e.target.value.trim()
-  e.target.value = e.target.value.trim()
-
-  if(e.code === "Enter") {
-    e.preventDefault()
-    document.querySelector('.card__name').textContent = patchName
-
-    let charsLeft = 26 - e.target.value.length
-    document.getElementById('name-amount').textContent = charsLeft
-
-    if(cardName.textContent.length > 13) {
-      cardName.innerHTML = cardName.textContent.slice(0, 13) + `<br/>` + cardName.textContent.slice(13,)
-    }
-  }
-});
 
 function setOpacity(targetElement, elements, printImg) {
   printImg.style.opacity = '0.5';
@@ -256,8 +172,6 @@ async function fetchPrints() {
 async function setPrints() {
   const prints = await fetchPrints();
 
-  console.log(prints);
-
   const frontPrints = Object.values(prints.front);
   const sidePrints = Object.values(prints.side);
   const patchPrints = Object.values(prints.patch);
@@ -323,4 +237,44 @@ navButtons.forEach(navButton => {
       sections[currentSectionIndex-1].classList.add('active')
     }
   })
+})
+
+const currentVariantTextMain = document.querySelector('.constructor__main .constructor__current span')
+const currentVariantTextShevronLeft = document.querySelector('.constructor.shevron-left .constructor__current span')
+const currentVariantTextShevronRight = document.querySelector('.constructor.shevron-right .constructor__current span')
+
+swiperConstructor.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor__main .swiper-pagination-bullet')
+  const swiperShevronMainLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor__main .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronMainLength) {
+    currentVariantTextMain.innerHTML = ` пуст`
+  } else {
+    currentVariantTextMain.innerHTML = `${activeSlideIndex+1}/${swiperShevronMainLength-1}`
+  }
+})
+
+swiperConstructor2.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor.shevron-left .swiper-pagination-bullet')
+  const swiperShevronLeftLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-left .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronLeftLength) {
+    currentVariantTextShevronLeft.innerHTML = ` пуст`
+  } else {
+    currentVariantTextShevronLeft.innerHTML = `${activeSlideIndex+1}/${swiperShevronLeftLength-1}`
+  }
+})
+
+swiperConstructor3.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.constructor.shevron-right .swiper-pagination-bullet')
+  const swiperShevronRightLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.constructor.shevron-right .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === swiperShevronRightLength) {
+    currentVariantTextShevronRight.innerHTML = ` пуст`
+  } else {
+    currentVariantTextShevronRight.innerHTML = `${activeSlideIndex+1}/${swiperShevronRightLength-1}`
+  }
 })
