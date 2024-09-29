@@ -86,9 +86,8 @@ section {
   }
 
   &__photo {
-    flex-basis: 100%;
+    width: 100%;
     height: 100%;
-
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -1362,6 +1361,10 @@ section {
 
 .intro.final {
   background: #fff;
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 100;
+  align-items: center;
 
   .intro__link {
     @include promo-link-active;
@@ -1420,15 +1423,8 @@ section {
     visibility: hidden;
   }
 
-  .constructor__variants {
-    width: 85%;
-    top: -60%;
-    left: 7%;
-    transform: unset;
-  }
-
   .constructor__variants--final {
-    // width: 30%;
+    width: 75%;
   }
 }
 
@@ -1440,7 +1436,7 @@ section {
   height: 43%;
   transform: translate(-50%, -55%);
   cursor: pointer;
-  z-index: 4;
+  z-index: 10;
 }
 
 .jersey__left-overlay {

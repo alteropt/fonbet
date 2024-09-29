@@ -71,7 +71,7 @@ const cardSwiper = new Swiper(document.querySelector('.card__choice .swiper'), {
 });
 
 const finalSwiper = new Swiper(
-  document.querySelector('.jersey .constructor__variants--final'),
+  '.jersey .constructor__variants--final',
   {
     direction: 'horizontal',
     slidesToShow: 1,
@@ -79,8 +79,8 @@ const finalSwiper = new Swiper(
     loop: true,
     enabled: false,
     navigation: {
-      nextEl: '.constructor__choice .swiper-button-next',
-      prevEl: '.constructor__choice .swiper-button-prev',
+      nextEl: '.constructor__choice--final .swiper-button-next',
+      prevEl: '.constructor__choice--final .swiper-button-prev',
     },
     pagination: {
       el: '.constructor choice .swiper-pagination',
