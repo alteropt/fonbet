@@ -70,7 +70,44 @@ const cardSwiper = new Swiper(document.querySelector('.card__choice .swiper'), {
   },
 });
 
-const finalSwiper = new Swiper(
+const finalSwiperRight = new Swiper(
+  '.jersey .jersey__shevron-wrapper--right',
+  {
+    direction: 'horizontal',
+    slidesToShow: 1,
+    spaceBetween: 12,
+    loop: true,
+    enabled: false,
+    navigation: {
+      nextEl: '.swiper__nav-right .swiper-button-next',
+      prevEl: '.swiper__nav-right .swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper__nav-right .swiper-pagination',
+      clickable: true,
+    },
+  }
+);
+
+const finalSwiperLeft = new Swiper(
+  '.jersey .jersey__shevron-wrapper--left',
+  {
+    direction: 'horizontal',
+    slidesToShow: 1,
+    spaceBetween: 12,
+    loop: true,
+    enabled: false,
+    navigation: {
+      nextEl: '.swiper__nav-left .swiper-button-next',
+      prevEl: '.swiper__nav-left .swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper__nav-left .swiper-pagination',
+      clickable: true,
+    },
+  }
+);
+const finalSwiperCenter = new Swiper(
   '.jersey .constructor__variants--final',
   {
     direction: 'horizontal',
@@ -79,15 +116,16 @@ const finalSwiper = new Swiper(
     loop: true,
     enabled: false,
     navigation: {
-      nextEl: '.constructor__choice--final .swiper-button-next',
-      prevEl: '.constructor__choice--final .swiper-button-prev',
+      nextEl: '.swiper__nav-center .swiper-button-next',
+      prevEl: '.swiper__nav-center .swiper-button-prev',
     },
     pagination: {
-      el: '.constructor choice .swiper-pagination',
+      el: '.swiper__nav-center .swiper-pagination',
       clickable: true,
     },
   }
 );
+
 
 function setOpacity(targetElement, elements, printImg) {
   printImg.style.opacity = '0.5';
@@ -111,15 +149,25 @@ function addEventListeners() {
   const printImg = document.querySelector('.l-jersey-image-5');
   const allSections = [mainPrint, leftShevron, rightShevron, patch];
 
+  const swiperNavRight = document.querySelector('.swiper__nav-right')
+  const swiperNavLeft = document.querySelector('.swiper__nav-left')
+  const swiperNavCenter = document.querySelector('.swiper__nav-center')
+
   rightOverlay.addEventListener('click', (e) => {
+    swiperNavRight.classList.add('active')
+    finalSwiperRight.enable()
     const elements = [mainPrint, leftShevron, patch];
     setOpacity(rightShevron, elements, printImg);
   });
   leftOverlay.addEventListener('click', (e) => {
+    swiperNavLeft.classList.add('active')
+    finalSwiperLeft.enable()
     const elements = [mainPrint, rightShevron, patch];
     setOpacity(leftShevron, elements, printImg);
   });
   centerOverlay.addEventListener('click', (e) => {
+    swiperNavCenter.classList.add('active')
+    finalSwiperCenter.enable()
     const elements = [rightShevron, leftShevron, patch];
     setOpacity(mainPrint, elements, printImg);
   });
@@ -131,6 +179,11 @@ function addEventListeners() {
   finalSection.addEventListener('click', (e) => {
     const jerseySection = document.querySelector('.jersey');
     if (!jerseySection.contains(e.target)) {
+      swiperNavRight.classList.remove('active')
+      swiperNavLeft.classList.remove('active')
+      swiperNavCenter.classList.remove('active')
+      
+      console.log(swiperNavCenter);
       printImg.style.opacity = '1';
       allSections.forEach((el) => {
         el.style.opacity = '1';
@@ -242,6 +295,9 @@ navButtons.forEach(navButton => {
 const currentVariantTextMain = document.querySelector('.constructor__main .constructor__current span')
 const currentVariantTextShevronLeft = document.querySelector('.constructor.shevron-left .constructor__current span')
 const currentVariantTextShevronRight = document.querySelector('.constructor.shevron-right .constructor__current span')
+const currentVariantTextFinalCenter = document.querySelector('.swiper__nav-center .constructor__current span')
+const currentVariantTextFinalLeft = document.querySelector('.swiper__nav-left .constructor__current span')
+const currentVariantTextFinalRight = document.querySelector('.swiper__nav-right .constructor__current span')
 
 swiperConstructor.on('slideChange afterInit init', () => {
   let swiperBullets = document.querySelectorAll('.constructor__main .swiper-pagination-bullet')
@@ -276,5 +332,39 @@ swiperConstructor3.on('slideChange afterInit init', () => {
     currentVariantTextShevronRight.innerHTML = ` пуст`
   } else {
     currentVariantTextShevronRight.innerHTML = `${activeSlideIndex+1}/${swiperShevronRightLength-1}`
+  }
+})
+
+finalSwiperCenter.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.swiper__nav-center .swiper-pagination-bullet')
+  const finalSwiperCenterLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.swiper__nav-center .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === finalSwiperCenterLength) {
+    currentVariantTextFinalCenter.innerHTML = ` пуст`
+  } else {
+    currentVariantTextFinalCenter.innerHTML = `${activeSlideIndex+1}/${finalSwiperCenterLength-1}`
+  }
+})
+finalSwiperLeft.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.swiper__nav-left .swiper-pagination-bullet')
+  const finalSwiperLeftLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.swiper__nav-left .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === finalSwiperLeftLength) {
+    currentVariantTextFinalLeft.innerHTML = ` пуст`
+  } else {
+    currentVariantTextFinalLeft.innerHTML = `${activeSlideIndex+1}/${finalSwiperLeftLength-1}`
+  }
+})
+finalSwiperRight.on('slideChange afterInit init', () => {
+  let swiperBullets = document.querySelectorAll('.swiper__nav-right .swiper-pagination-bullet')
+  const finalSwiperRightLength = swiperBullets.length
+  const activeSlideIndex = Array.from(swiperBullets).indexOf(document.querySelector('.swiper__nav-right .swiper-pagination-bullet-active'))
+
+  if(activeSlideIndex + 1 === finalSwiperRightLength) {
+    currentVariantTextFinalRight.innerHTML = ` пуст`
+  } else {
+    currentVariantTextFinalRight.innerHTML = `${activeSlideIndex+1}/${finalSwiperRightLength-1}`
   }
 })

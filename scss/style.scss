@@ -22,8 +22,8 @@
 section {
   position: relative;
 
-  height: 100vh !important;
   overflow-y: auto;
+  overflow-x: hidden;
   display: none !important;
 
   &.active {
@@ -79,10 +79,14 @@ section {
   }
 
   &__text {
-    flex-basis: 50%;
+    flex-basis: 45%;
     padding-bottom: 20px;
     z-index: 2;
     align-self: center;
+
+    @media(max-width: 1280px) {
+      flex-basis: 50%;
+    }
   }
 
   &__photo {
@@ -99,7 +103,6 @@ section {
 
       @media(min-width: 1440px) {
         height: auto;
-        flex-basis: 100%;
       }
     }
 
@@ -882,6 +885,7 @@ section {
     &.container {
       padding-right: 0;
       padding-left: 0;
+      padding-top: 12px;
     }
 
     &__choice {
@@ -1365,9 +1369,55 @@ section {
   position: relative;
   z-index: 100;
   align-items: center;
+  justify-content: flex-start;
+  gap: 32px;  
+
+  @media(max-height: 650px) {
+    padding-bottom: 100px;
+  }
+
+  @media(max-width: 1280px) {
+    padding-bottom: 180px;
+  }
+
+  .main-arrow-prev {
+    bottom: 32px;
+    left: 27%;
+    z-index: 10;
+
+    @media(max-width: 768px) {
+      left: 24px;
+    }
+  }
+
+  .main-arrow-again {
+    right: 32px;   
+    bottom: 32px;
+    z-index: 10;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 0.9;
+    max-width: 180px;
+
+    @media(max-width: 768px) {
+      right: 24px;
+    }
+    
+    @media(max-height: 650px) {
+      right: 12px;
+    }
+
+
+  }
+
 
   .intro__link {
     @include promo-link-active;
+  }
+
+  .constructor__current {
+    position: static;
+    transform: translate(0, 0);
   }
 
   .intro__slogan, .intro__desc {
@@ -1377,9 +1427,15 @@ section {
 
   .intro__desc {
     max-width: 400px;
+
+    @media(max-width: 768px) {
+      margin-bottom: 20px;
+    }
   }
 
-  @media(max-width: 640px), (orientation: portrait) {
+  @media(max-width: 768px), (orientation: portrait) {
+    gap: 64px;
+
     .intro {
       height: fit-content;
     }
@@ -1390,10 +1446,64 @@ section {
       left: auto;
       transform: translate(0, 0);
       bottom: auto;
+      max-width: 240px;
     }
 
     .intro__desc {
       margin-bottom: 20px;
+    }
+  }
+
+  .swiper__nav {
+    background-color: $cText;
+    border-radius: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 45px 85px 20px;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    z-index: 11;  
+    width: fit-content;
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
+
+  .swiper-pagination {
+    top: 20px;
+    z-index: 10;
+  }
+
+  .swiper-pagination-bullet {
+    width: 23px;
+    height: 23px;
+    border-radius: 8px;
+    background-color: $cWhite;
+    opacity: 1;
+
+    &.swiper-pagination-bullet-active {
+      background-color: $cActive;
+    }
+
+    &:last-child {
+      background-image: url(../img/screens/2/crossWhite.png);
+      background-color: transparent;
+      background-size: cover;
+
+      &.swiper-pagination-bullet-active {
+        background-image: url(../img/screens/1/crossActive.png);
+      }
     }
   }
 }
@@ -1402,13 +1512,7 @@ section {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 50%;
-
-  @media(max-width: 640px) {
-    width: 100%;
-  }
 }
 
 .right-section {
@@ -1418,9 +1522,10 @@ section {
 .jersey {
   position: relative;
   display: inline-block;
+  user-select: none;
 
   .constructor__current {
-    visibility: hidden;
+    white-space: nowrap;
   }
 
   .constructor__variants--final {
@@ -1519,12 +1624,20 @@ section {
 
   &--right {
     top: 40%;
-    right: -6%;
+    right: -14%;
+
+    @media(max-width: 425px) {
+      right: -16%;
+    }
   }
 
   &--left {
     top: 36%;
-    left: 0%;
+    left: -6%;
+
+    @media(max-width: 425px) {
+      left: -8%;
+    }
   }
 }
 
