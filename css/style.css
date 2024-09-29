@@ -1731,3 +1731,16 @@ section.active {
     right: 0;
   }
 }
+
+.patch-user-name {
+  position: absolute;
+  top: 29%;
+  left: 11%;
+  z-index: 999;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  max-width: 188px;
+  word-break: break-word;
+  text-transform: uppercase;
+}

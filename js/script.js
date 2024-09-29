@@ -169,6 +169,14 @@ async function fetchPrints() {
   return response.prints;
 }
 
+function insertSlide (src, parent) {
+  const imgEl = document.createElement('img');
+  imgEl.src = src;
+  imgEl.className = 'swiper-slide';
+
+  parent.insertBefore(imgEl, parent.firstChild);
+}
+
 async function setPrints() {
   const prints = await fetchPrints();
 
@@ -182,35 +190,19 @@ async function setPrints() {
   const patchParentElement = document.querySelector('.card .swiper-wrapper');
 
   frontPrints.reverse().forEach(print => {
-    const imgEl = document.createElement('img');
-    imgEl.src = print.image;
-    imgEl.className = 'swiper-slide';
-
-    frontParentElement.insertBefore(imgEl, frontParentElement.firstChild);
+    insertSlide(print.image, frontParentElement);
   });
 
   sidePrints.forEach((print) => {
-    const imgEl = document.createElement('img');
-    imgEl.src = print.image;
-    imgEl.className = 'swiper-slide';
-
-    leftSideParentElement.insertBefore(imgEl, leftSideParentElement.firstChild);
+    insertSlide(print.image, leftSideParentElement);
   });
 
   sidePrints.forEach((print) => {
-    const imgEl = document.createElement('img');
-    imgEl.src = print.image;
-    imgEl.className = 'swiper-slide';
-
-    rightSideParentElement.insertBefore(imgEl, rightSideParentElement.firstChild);
+    insertSlide(print.image, rightSideParentElement);
   });
 
   patchPrints.reverse().forEach((print) => {
-    const imgEl = document.createElement('img');
-    imgEl.src = print.image;
-    imgEl.className = 'swiper-slide';
-
-    patchParentElement.insertBefore(imgEl, patchParentElement.firstChild);
+    insertSlide(print.image, patchParentElement);
   });
 
   swiperConstructor.init();
@@ -278,3 +270,22 @@ swiperConstructor3.on('slideChange afterInit init', () => {
     currentVariantTextShevronRight.innerHTML = `${activeSlideIndex+1}/${swiperShevronRightLength-1}`
   }
 })
+
+const patchInput = document.querySelector('#patch-name');
+const patchName = document.querySelector('.patch-user-name');
+const symbolsCount = document.querySelector('#name-amount');
+
+const patchNameHandler = function () {
+  const maxlength = parseInt(patchInput.getAttribute('maxlength'), 10);
+  symbolsCount.innerHTML = maxlength - this.value.length;
+
+  patchName.innerHTML = this.value;
+
+  if (this.value.length > maxlength) {
+    this.value = this.value.substr(0, maxlength);
+    return false;
+  }
+};
+
+patchInput.onkeyup = patchNameHandler
+patchInput.onblur = patchNameHandler;
