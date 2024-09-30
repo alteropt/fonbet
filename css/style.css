@@ -149,6 +149,7 @@ h2 {
 }
 
 .container {
+  min-height: 100vh;
   padding: 20px 100px 0 120px;
 }
 @media (max-width: 1280px) {
@@ -1466,7 +1467,7 @@ section.active {
   white-space: nowrap;
 }
 .jersey .constructor__variants--final {
-  width: 75%;
+  width: 80%;
 }
 
 .jersey__center-overlay {
@@ -1483,8 +1484,8 @@ section.active {
 .jersey__left-overlay {
   position: absolute;
   top: 30%;
-  left: 10%;
-  width: 15%;
+  left: 0%;
+  width: 20%;
   height: 30%;
   cursor: pointer;
   z-index: 4;
@@ -1493,8 +1494,8 @@ section.active {
 .jersey__right-overlay {
   position: absolute;
   top: 30%;
-  right: 10%;
-  width: 15%;
+  right: 0%;
+  width: 20%;
   height: 30%;
   cursor: pointer;
   z-index: 4;
@@ -1502,10 +1503,10 @@ section.active {
 
 .jersey__bottom-overlay {
   position: absolute;
-  bottom: 5%;
-  right: 27%;
-  width: 9%;
-  height: 12%;
+  bottom: 4%;
+  right: 26%;
+  width: 18%;
+  height: 13%;
   cursor: pointer;
   z-index: 4;
 }
@@ -1515,8 +1516,6 @@ section.active {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 115%;
-  height: 115%;
   max-width: unset;
 }
 
@@ -1543,11 +1542,11 @@ section.active {
 
 .l-jersey-right-shevron-5 {
   width: 100%;
-  -webkit-clip-path: polygon(0 0, 26% 0, 30% 100%, 0 100%);
-          clip-path: polygon(0 0, 26% 0, 30% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 49% 0, 55% 100%, 0 100%);
+          clip-path: polygon(0 0, 49% 0, 55% 100%, 0 100%);
 }
 
-.l-jersey-let-shevron-5 {
+.l-jersey-left-shevron-5 {
   width: 100%;
   -webkit-clip-path: polygon(55% 0, 100% 0, 100% 100%, 30% 100%);
           clip-path: polygon(55% 0, 100% 0, 100% 100%, 30% 100%);
@@ -1556,12 +1555,12 @@ section.active {
 
 .jersey__shevron-wrapper {
   position: absolute;
-  width: 100px;
+  width: 50px;
   z-index: 4;
 }
 .jersey__shevron-wrapper--right {
-  top: 40%;
-  right: -14%;
+  top: 36%;
+  right: -3%;
 }
 @media (max-width: 425px) {
   .jersey__shevron-wrapper--right {
@@ -1570,12 +1569,20 @@ section.active {
 }
 .jersey__shevron-wrapper--left {
   top: 36%;
-  left: -6%;
+  left: 0%;
 }
 @media (max-width: 425px) {
   .jersey__shevron-wrapper--left {
     left: -8%;
   }
+}
+
+.jersey__patch-wrapper {
+  position: absolute;
+  bottom: 4%;
+  right: 27%;
+  z-index: 2;
+  width: 7%;
 }
 
 .final__patterns {
