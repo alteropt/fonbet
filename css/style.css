@@ -1861,3 +1861,45 @@ section.active {
   word-break: break-word;
   text-transform: uppercase;
 }
+
+.save.intro {
+  padding: 20px;
+  min-height: 100vh;
+  align-items: center;
+}
+.save.intro .intro__photo {
+  width: auto;
+  align-items: center;
+  flex-basis: 50%;
+}
+.save.intro .intro__desc {
+  max-width: 365px;
+}
+.save.intro .intro__link {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: static;
+  transform: translate(0, 0);
+}
+@media (max-width: 768px), (orientation: portrait) {
+  .save.intro {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .save.intro .intro__text {
+    align-self: flex-start;
+  }
+  .save.intro .intro__desc {
+    margin-bottom: 20px;
+    max-width: 210px;
+  }
+  .save.intro .intro__link {
+    max-width: 100%;
+    padding: 10px 16px;
+    background-color: #fff;
+    color: #222B36;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+}
